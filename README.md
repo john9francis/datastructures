@@ -19,6 +19,21 @@ In this tutorial I will be going over the following data structures:
 * [Tree](#tree)
 
 ## Stack
+### Introduction
+Imagine a stack of pancakes. 
+### Adding to a stack
+```python
+my_stack.append('item one')
+```
+### Getting info from a stack
+```python
+my_stack.pop()
+```
+### Performance
+
+### Example
+
+### Problem to solve
 
 ## Set 
 
