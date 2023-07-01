@@ -67,6 +67,16 @@ print(len(my_stack))
 ```
 Try to predict what this code will output. 
 
+Now I will go through and explain what happens in this code. First, a new stack is defined by `my_stack = []`. Then, 1 and 2 are added to the top of the stack. We then took 2 off the stack, leaving my_stack as just [1]. Then we added 3 on top, and 4 on top, making the stack [1,3,4]. Next, we removed the 4, and then removed the 3, lleaving the stack as [1]. 
+
+Finally, we printed `my_stack.pop()` which does two things. First, it takes the 1 off the stack, leaving the stack empty. Second, it prints "1" because the pop() function returns what it popped. Finally, we print the length of the stack with `print(len(my_stack))`. which equals zero.
+
+So the output should be:
+```powershell
+> 1
+> 0
+```
+
 ### Problem to solve
 
 ## Set 
