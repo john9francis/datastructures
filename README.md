@@ -79,8 +79,38 @@ So the output should be:
 
 ### Problem to solve
 
-Write a function called, "reverse_word" that 
+Write a python function called, "reverse_word" that takes in a string, and using stacks, reverses all the letters in the string. In other words, this should be the output:
+
+```python
+print(reverse_word('Hello World'))
+```
+```powershell
+> dlroW olleH
+```
+
+[example solution](#example-solutions)
 
 ## Set 
 
 ## Tree
+
+## Example solutions
+Example solution to the stack problem:
+```python
+def reverse_word(word):
+  '''Takes in a word and returns the reverse of it'''
+
+  # put the letters of the word into a stack
+  word_stack = []
+  for letter in word:
+    word_stack.append(letter)
+
+  # create a string for the new word
+  new_word = ""
+
+  # pop the letters off the end of the stack and add them to the new word string
+  for i in range(len(word_stack)):
+    new_word += word_stack.pop()
+
+  return new_word
+```
