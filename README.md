@@ -14,8 +14,12 @@ However, there are many other structures including stack, queue, set, linked lis
 
 In this tutorial I will be going over the following data structures:
 
-* [Stack]
-* [Set]
-* [Tree]
+* [Stack](#stack)
+* [Set](#set)
+* [Tree](#tree)
 
-## Useful websites
+## Stack
+
+## Set 
+
+## Tree
