@@ -52,7 +52,7 @@ If you think about it, the computer doesn't have to do much to deal with a stack
 
 ### Example
 Here's an example of some stack operations. 
-```python=
+```python
 my_stack = []
 my_stack.append(1)
 my_stack.append(2)
