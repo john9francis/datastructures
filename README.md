@@ -92,6 +92,20 @@ print(reverse_word('Hello World'))
 
 ## Set 
 
+### Introduction:
+
+Imagine you are playing with some russian nesting dolls. Let's say they are labelled 1 through 10, with the smallest being labelled, "1," and the biggest being labelled, "10." These dolls are like a set. A set has two constraints: 
+
+1. Is always in numerical order
+2. Can only have one of each value
+
+In the russian nesting dolls example, say you want to put 1, 3, and 10 together. You must put 1 inside of 3, and 3 inside of 10. You can't put 10 inside of 1, because the smaller one must go inside of the bigger one. This is similar to a set, because in a set you can't store the smaller numbers after the bigger numbers. Values in a set automatically get put in order smallest to largest.
+
+If you have two russian nesting dolls that are the same size, and you want to put them all together, you can't include both the same-sized dolls in there, you must only have one for them to nicely fit inside of eachother. A set is like this as well, it only takes unique values. Since a set is automatically sorted in order, if there were two of the same number it wouldn't know which one to put first, or how to access the correct one later.
+
+### Adding to a set
+
+
 ## Tree
 
 ## Example solutions
