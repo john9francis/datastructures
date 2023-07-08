@@ -96,10 +96,23 @@ print(reverse_word('Hello World'))
 
 A set is a list in which there is one rule:
 
-***Each value is unique. There can be no duplicates.***
+1. Each value is unique.
 
 ### Adding to a set
 
+In python, we can use the `set` keyword to create a set.
+
+```python
+my_set = set()
+```
+
+### Getting info from a set
+
+### Performance
+
+### Example
+
+### Problem to solve
 
 ## Tree
 
