@@ -112,10 +112,12 @@ What a hashing function does is take in a non-integer data point, (Like a string
 
 ### Adding to a set
 
-In python, we can use the `set` keyword to create a set.
+In python, we can use the `set` keyword or curly braces `{}` to create a set.
 
 ```python
 my_set = set()
+# or
+my_set = {}
 ```
 
 To add to the set, you can use the keyword, "add" provided by python. 
@@ -125,24 +127,47 @@ my_set.add(1)
 If an integer is already found in the set, python will ignore a duplicate.
 ```python
 my_set.add(1)
-print(x for x in my_set)
+for x in my_set:
+  print(x)
 # output: 1
 
 my_set.add(1)
 my_set.add(1)
-print(x for x in my_set)
+for x in my_set:
+  print(x)
 # output: 1
 ```
 
 ### Getting info from a set
+You can't access a certain index of a set in python using the classic `list[i]` notation, however, you can quickly check if a value is found in the set. You can find a value by utilizing the "in" keyword.
+```python
+if x in my_set:
+  print(x)
+```
+Another useful thing you can do in sets is detect identical entries in both sets. For example, if you run following python code, it will tell you which values are present in both sets.
+```python
+set1 = {1,2,3,4,5}
+set2 = {3,4,5,6,7}
+
+shared_values = set1 & set2
+
+# display result
+for x in shared_values:
+  print(x)
+# output: 3,4,5
+```
 
 ### Performance
+
+Hash values work almost like pointers, they are used to access a certain index in the set. Because of this, most set operations are O(1) performance. This is a great benefit of using sets, their excellent performance. 
 
 ### Conflicts
 
 ### Example
 
 ### Problem to solve
+
+Write a function that takes in a list of strings, and use a set to check which words are in both lists. Return a list of only the words that are found in both lists. 
 
 ## Tree
 
