@@ -111,12 +111,12 @@ What a hashing function does is take in a non-integer data point, (Like a string
 
 ### Adding to a set
 
-In python, we can use the `set` keyword or curly braces `{}` to create a set.
+In python, we can use the `set` keyword to create a set. If you want to create a set that already has values in it, use curly braces. `{}`
 
 ```python
 my_set = set()
 # or
-my_set = {}
+my_set = {1,2,3}
 ```
 
 To add to the set, you can use the keyword, "add" provided by python. 
@@ -161,8 +161,11 @@ for x in shared_values:
 Hash values work almost like pointers, they are used to access a certain index in the set. Because of this, most set operations are O(1) performance. This is a great benefit of using sets, their excellent performance. 
 
 ### Conflicts
+Sometimes there will be conflicts with a set when you want to add two of the same exact integer to it. If it's absolutely necessary, there are ways to include two of the same index in a set. These issues are called conflicts. One example of a conflict resolution is having one entry in a set be a list of multiple values. Conflicts in sets can take a toll on the performance, possibly making the set's performance O(n).
 
 ### Example
+
+Here's an example of a set. Let's say we have a paragraph, and we want a list of all the unique words in the paragraph. Here's a function using sets to solve our problem. 
 
 ### Problem to solve
 
