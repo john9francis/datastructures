@@ -236,7 +236,7 @@ There's kind of a lot going on here, but let's break it down. First, we have a f
 
 ### Problem to solve
 
-Write a function that takes in a list of strings, and use a set to check which words are in both lists. Return a list of only the words that are found in both lists. 
+Write a function that takes in a list of strings, and use a set to check which words are in both lists. Return a list of only the words that are found in both lists. Also display how many words are in common with the two lists. 
 
 [example solution](#example-solutions)
 
@@ -262,3 +262,5 @@ def reverse_word(word):
 
   return new_word
 ```
+
+example solution to the set problem
