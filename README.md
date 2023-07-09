@@ -1,8 +1,6 @@
 # Common datastructures used in computer programming
 
-Author: John Francis
-
-Website: [John Francis](john9francis.github.io)
+Author: [John Francis](john9francis.github.io)
 
 Date: 7/1/2023
 
