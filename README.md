@@ -243,7 +243,7 @@ Write a function that takes in a list of strings, and use a set to check which w
 ## Tree
 
 ## Example solutions
-Example solution to the stack problem:
+### Example solution to the stack problem:
 ```python
 def reverse_word(word):
   '''Takes in a word and returns the reverse of it'''
@@ -263,4 +263,86 @@ def reverse_word(word):
   return new_word
 ```
 
-example solution to the set problem
+### Example solution to the set problem
+```python
+speech_1 = '''The media will not show the magnitude of this crowd. Even I, 
+when I turned on today, I looked, and I saw thousands of people here, but you 
+don’t see hundreds of thousands of people behind you because they don’t want 
+to show that. We have hundreds of thousands of people here, and I just want 
+them to be recognized by the fake news media. Turn your cameras please and show 
+what’s really happening out here because these people are not going to take 
+it any longer. They’re not going to take it any longer. Go ahead. Turn your 
+cameras, please. Would you show? They came from all over the world, actually, 
+but they came from all over our country. I just really want to see what they 
+do. I just want to see how they covered. I’ve never seen anything like it. 
+But it would be really great if we could be covered fairly by the media. 
+The media is the biggest problem we have as far as I’m concerned, single 
+biggest problem, the fake news and the big tech. Big tech is now coming into 
+their own. We beat them four years ago. We surprised them. We took them by 
+surprise and this year, they rigged an election. They rigged it like they’ve 
+never rigged an election before. By the way, last night, they didn’t do a bad 
+job either, if you notice. I’m honest. I just, again, I want to thank you. 
+It’s just a great honor to have this kind of crowd and to be before you. 
+Hundreds of thousands of American patriots are committed to the honesty of 
+our elections and the integrity of our glorious Republic. All of us here 
+today do not want to see our election victory stolen by emboldened radical 
+left Democrats, which is what they’re doing and stolen by the fake news 
+media. That’s what they’ve done and what they’re doing. We will never give up. 
+We will never concede, it doesn’t happen. You don’t concede when there’s 
+theft involved.'''
+
+speech_2 = '''Well, they have to deal with the … Look, there is institutional 
+segregation in this country. And from the time I got involved, I started 
+dealing with that. Redlining, banks, making sure that we are in a position 
+where Look, we talk about education. I propose that what we take is those very 
+poor schools, the Title 1 schools, triple the amount of money we spend from 
+$15 to $45 billion a year. Give every single teacher a raise to the equal of … 
+A raise of getting out of the $60,000 level. No. 2, make sure that we bring in 
+to the help with the stud—the teachers deal with the problems that come from 
+home. The problems that come from home, we need… We have one school psychologist 
+for every 1,500 kids in America today. It’s crazy. The teachers are required 
+I’m married to a teacher. My deceased wife is a teacher. They have every 
+problem coming to them. Make sure that every single child does, in fact, have 
+three, four, and five-year-olds go to school. School! Not day care, school. We 
+bring social workers into homes of parents to help them deal with how to raise 
+their children. It’s not that they don’t want to help. They don’t know what— 
+They don’t know what quite what to do. Play the radio. Make sure the television 
+excuse me, make sure you have the record player on at night. The phone—make sure 
+the kids hear words. A kid coming from a very poor school—er, a very poor 
+background will hear 4 million words fewer spoken by the time they get there.'''
+
+def get_pure_words_list(words):
+  '''Takes in a long string of words and returns a list of just the words,
+  no punctuation, uppercase letters, or dashes.'''
+
+  # create a list of all the words without punctuation
+  word_list = words.lower().replace(',','').replace('.','').split(' ')
+
+  # clean out all the empty strings and returns in the list
+  word_list = [word for word in word_list if word != '']
+  word_list = [word for word in word_list if word != '\n']
+  word_list = [word for word in word_list if word != '--']
+
+  return word_list
+
+
+word_list1 = get_pure_words_list(speech_1)
+word_list2 = get_pure_words_list(speech_2)
+
+def find_similar_entries(list1, list2):
+  '''Takes in two lists and uses sets to find only the entries present in both 
+  lists'''
+  set1 = set(list1)
+  set2 = set(list2)
+
+  return set1 & set2
+
+
+# displaying the result:
+for x in find_similar_entries(word_list1, word_list2):
+  print(x)
+
+# displaying the amount of words in both vs the amount of similar words
+print(len(word_list1) + len(word_list2))
+print(len(find_similar_entries(word_list1, word_list2)))
+```
