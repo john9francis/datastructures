@@ -91,6 +91,7 @@ print(reverse_word('Hello World'))
 ## Set 
 
 ### Introduction:
+![Several unique rocks organized in a desk organizer](rock_collection.jpg)
 
 Imagine you have a rock collection. You want to collect one rock of each type. If you find a new rock, and you already have one of that type, you don't need this new rock. This rock collection is like a set. 
 
