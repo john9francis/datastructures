@@ -94,9 +94,21 @@ print(reverse_word('Hello World'))
 
 ### Introduction:
 
+Imagine you have a rock collection. You want to collect one rock of each type. If you find a new rock, and you already have one of that type, you don't need this new rock. This rock collection is like a set. 
+
 A set is a list in which there is one rule:
 
 1. Each value is unique.
+
+So let's say you have a set including the values 1,2, and 3. If you try to add 1 to the set, it will ignore the addition because there is already a 1 in the set. So after the add attempt, your set will still only include 1,2, and 3. 
+
+The purpose of sets is to be very efficient in adding and retrieving data. Another purpose is to find duplicates between data structures. 
+
+### Hashing functions:
+
+A very common practice when making sets is using hashing functions. Hashing functions make it possible for sets to be extremely efficient.
+
+What a hashing function does is take in a non-integer data point, (Like a string, bool, or other object type) and turn it into a unique integer that can be put into a set. For example, a hashing function could turn the string "Hello World" into the code: "19482743." Then that integer can be stored in a set. 
 
 ### Adding to a set
 
@@ -106,9 +118,27 @@ In python, we can use the `set` keyword to create a set.
 my_set = set()
 ```
 
+To add to the set, you can use the keyword, "add" provided by python. 
+```python
+my_set.add(1)
+```
+If an integer is already found in the set, python will ignore a duplicate.
+```python
+my_set.add(1)
+print(x for x in my_set)
+# output: 1
+
+my_set.add(1)
+my_set.add(1)
+print(x for x in my_set)
+# output: 1
+```
+
 ### Getting info from a set
 
 ### Performance
+
+### Conflicts
 
 ### Example
 
