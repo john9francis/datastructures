@@ -167,9 +167,78 @@ Sometimes there will be conflicts with a set when you want to add two of the sam
 
 Here's an example of a set. Let's say we have a paragraph, and we want a list of all the unique words in the paragraph. Here's a function using sets to solve our problem. 
 
+```python
+paragraph = '''Four score and seven years ago our fathers brought forth on this 
+  continent, a new nation, conceived in Liberty, and dedicated to the 
+  proposition that all men are created equal. Now we are engaged in a great 
+  civil war, testing whether that nation, or any nation so conceived and so 
+  dedicated, can long endure. We are met on a great battle-field of that war. 
+  We have come to dedicate a portion of that field, as a final resting place 
+  for those who here gave their lives that that nation might live. It is 
+  altogether fitting and proper that we should do this. But, in a larger 
+  sense, we can not dedicate, we can not consecrate, we can not hallow this 
+  ground. The brave men, living and dead, who struggled here, have 
+  consecrated it, far above our poor power to add or detract. The world will 
+  little note, nor long remember what we say here, but it can never forget 
+  what they did here. It is for us the living, rather, to be dedicated here 
+  to the unfinished work which they who fought here have thus far so nobly 
+  advanced. It is rather for us to be here dedicated to the great task 
+  remaining before us -- that from these honored dead we take increased 
+  devotion to that cause for which they gave the last full measure of 
+  devotion -- that we here highly resolve that these dead shall not have died 
+  in vain -- that this nation, under God, shall have a new birth of freedom 
+  -- and that government of the people, by the people, for the people, shall 
+  not perish from the earth.'''
+
+def get_pure_words_list(words):
+  '''Takes in a long string of words and returns a list of just the words,
+  no punctuation, uppercase letters, or dashes.'''
+
+  # create a list of all the words without punctuation
+  word_list = words.lower().replace(',','').replace('.','').split(' ')
+
+  # clean out all the empty strings and returns in the list
+  word_list = [word for word in word_list if word != '']
+  word_list = [word for word in word_list if word != '\n']
+  word_list = [word for word in word_list if word != '--']
+
+  return word_list
+
+
+def find_unique_words(words):
+  '''Takes in a long string and returns a set of only one of each word in 
+  the string.'''
+
+  # Get a list of all the words
+  word_list = get_pure_words_list(words)
+
+  # use the set feature that only unique entrys will be added
+  words_set = set()
+  for word in word_list:
+    words_set.add(word)
+
+  return words_set
+
+
+# display the result
+
+for x in find_unique_words(paragraph):
+ print(x)
+
+# if you want, get how many unique words are found in this paragraph
+total_words = len(get_pure_words_list(paragraph))
+unique_words = len(find_unique_words(paragraph))
+print(f"There are {total_words} total words")
+print(f"There are {unique_words} unique words.")
+
+```
+There's kind of a lot going on here, but let's break it down. First, we have a function called, `get_pure_words_list()` That converts the paragraph into a list of words. Then, we have a function called, `find_unique_words()` that uses sets to very quickly find all the unique words in the list. This function simply adds all the entries from the list to a set. The set will ignore the addition if the value is already found in the list. This makes the set only contain the unique words of the paragraph. 
+
 ### Problem to solve
 
 Write a function that takes in a list of strings, and use a set to check which words are in both lists. Return a list of only the words that are found in both lists. 
+
+[example solution](#example-solutions)
 
 ## Tree
 
