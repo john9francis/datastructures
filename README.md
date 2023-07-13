@@ -242,6 +242,9 @@ Write a function that takes in a list of strings, and use a set to check which w
 
 ## Tree
 
+### Intro
+![Hand dropping a puck into a plinko board](plinko.gif)
+
 ## Example solutions
 ### Example solution to the stack problem:
 ```python
