@@ -245,6 +245,8 @@ Write a function that takes in a list of strings, and use a set to check which w
 ### Intro
 ![Hand dropping a puck into a plinko board](plinko.gif)
 
+A tree (or binary search tree) is a very useful datastructure. To visualize a tree, I like to think of the "plinko" game. 
+
 ## Example solutions
 ### Example solution to the stack problem:
 ```python
