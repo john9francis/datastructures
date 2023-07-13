@@ -242,10 +242,83 @@ Write a function that takes in a list of strings, and use a set to check which w
 
 ## Tree
 
-### Intro
+### Introduction
 ![Hand dropping a puck into a plinko board](plinko.gif)
 
-A tree (or binary search tree) is a very useful datastructure. To visualize a tree, I like to think of the "plinko" game. 
+A tree (or binary search tree) is a very useful datastructure. To visualize a tree, I like to think of the "plinko" game. In the game, "plinko," you drop a puck into a board. The puck falls onto a peg. If the puck's weight is more shifted to the right, it rolls off the peg and goes right. If it's weight is more to the left, it rolls off to the left. The puck continues to hit pegs and go left or right, finally settling into it's place at the bottom. 
+
+When you add a value to a tree datastructure, a similar thing happens. The value starts at the first value, and checks if it's bigger or smaller than that value. If the added value is bigger than the first tree value, it gets sent to the "right." If it's less, it gets sent "left." It then compares with the value at that position. The value either goes "left" or "right" again, and continues the process until it gets sent to a position with no value. The value then gets inserted into that position where there was no value. 
+
+### Adding to a Tree
+
+We will be focusing our discussion on Binary Search Trees (BST) which are used to store numbers. 
+
+Let's say we have a tree with the following values. Visually, it's helpful to look at it like this:
+
+![Binary Search Tree](bst1.png)
+
+The "Root Node," is the first value that our new value is going to encounter. Let's choose a value and go over how to add it to the tree.
+
+Let's say we have a value of 10. To add it to the tree, we are going to play "plinko" with the value.
+
+First, the 10 encounters the root value, 13. Since 10 is less than 13, it gets sent left. There, it encounters a 6. 10 is greater than 6, so it gets sent right. There, it encounters an 8. 10 is greater than 8, so it gets sent right. Finally, there is no value to encounter, so the 10 gets added in this new position. 
+
+![Diagram of a 10 being added to the tree](bst2.png)
+
+
+### Getting info from a Tree
+
+Getting a value from a BST is very similar to adding a value. Most info you might need from the tree can be found by playing "plinko." 
+
+Let's say we want to find out if our tree contains a certain value. Well, we would start by comparing the value with the root. If the root is equal to the value, then yes, the value is found in the tree and we're done. If the value is not equal to the root, we need to send it either left or right depending on if it's greater than or equal to the root. 
+
+Let's do a visual example. Say we want to find out if the value "3" is found in our binary search tree. Study this diagram to see how we played "plinko" to see if the tree contained a 3. 
+
+![Diagram of searching tree for a 3](bst3.png)
+
+
+### Performance
+
+### Example
+
+One example is seeing if the tree contains a certain value. We will start by comparing the value of interest with the root value. If the value is bigger, send it right. If it's less, send it left. If it's equal, then return `true` because the value has been found. Here's a sample python function to illustrate how this is implimented:
+
+```python
+class BST:
+  # ...
+
+  def contains(self, value, current_branch=self.root):
+    '''Recursive function that checks if the value is in the tree. '''
+    # check if there is a value in this branch
+    if current_branch.data == None:
+      return false
+
+    # compare the value with the current branch
+    if value == current_branch.data:
+      return true
+
+    # if value is greater, then run the whole function again on the branch to the right
+    if value > current_branch.data:
+      contains(value, current_branch.right)
+
+    # if value is less, then run the whole function again on the branch to the left
+    if value < current_branch.data:
+      contains(value, current_branch.left)
+
+```
+
+In this code snippet, we are assuming we have a class called BST (Binary Search Tree.) We are also assuming that each branch is represented by an object, let's say `self.branch`. This object, `self.branch`, contains a `value` attribute, which is it's number. It also is possibly linked to a `left` branch (with a value less than) and a `right` branch (with a value greater than). 
+
+This function starts at the root branch, and takes in a value. First, it checks if the branch has no data. If this is true, the branch doesn't exist and therefore the value isn't found in the tree, so the function returns `false`.
+
+Next, it checks if the value is equal to the data of the root branch. If this is true, the data is found in the tree, and it's safe to end the function returning `true`. 
+
+In the case that the first two conditions don't apply, it checks if the value is greater than the root. If so, it calls the function again recursively with the `right` branch. This will repeat the whole process with this branch.
+
+Similarly, if the value is less than the root, it will call the function again on the branch directly to the `left` of the root. This will repeat the process on the left side of the tree.
+
+### Problem to solve
+
 
 ## Example solutions
 ### Example solution to the stack problem:
