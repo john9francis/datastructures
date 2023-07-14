@@ -279,9 +279,13 @@ Let's do a visual example. Say we want to find out if the value "3" is found in 
 
 ### Performance
 
-Dealing with a tree datastructure has excellent performance. Tree operations are often O(log n) performance, becuase of the nature of starting at the middle, then the middle of one side, then the middle of one side, etc. This is only possible if the tree is set up well. If a tree is to be O(log n) performance, it needs to have the root be the mean value. This is called a "balanced" tree. 
+Dealing with a tree datastructure has excellent performance. Tree operations are often O(log n) performance, becuase of the nature of starting at the middle, then the middle of one side, then the middle of one side, etc. 
 
-![]()
+This performance is only possible if the tree is set up well. If a tree is to be O(log n) performance, it needs to have the root be the mean value. This is called a "balanced" tree. If a tree has it's root as the lowest value, then it is "unbalanced" since all the other values will be to the right.  
+
+![Unbalanced tree vs. balanced tree](balanced_bst.jpg)
+
+There are many algorithms that can be used to take in an unbalanced tree and balance it, but those are complicated, and need their own full tutorial to understand. 
 
 ### Example
 
@@ -293,38 +297,140 @@ We will start by comparing the value of interest with the root value. If the val
 class BST:
   # ...
 
-  def contains(self, value, current_branch=self.root):
-    '''Recursive function that checks if the value is in the tree. '''
-    # check if there is a value in this branch
-    if current_branch.data == None:
-      return false
+  def contains(self, data):
+        """ 
+        Checks if data is in the BST.
+        """
+        return self._contains(data, self.root)  # Start at the root
 
-    # compare the value with the current branch
-    if value == current_branch.data:
-      return true
 
-    # if value is greater, then run the whole function again on the branch to the right
-    if value > current_branch.data:
-      contains(value, current_branch.right)
-
-    # if value is less, then run the whole function again on the branch to the left
-    if value < current_branch.data:
-      contains(value, current_branch.left)
+    def _contains(self, data, current_branch):
+        """
+        This function will search for a Branch that contains
+        'data'.  The current sub-tree being search is 
+        represented by 'Branch'.  This function is intended
+        to be called the first time by the __contains__ function.
+        """
+        
+        if data < current_branch.data:
+            # The data will be found on the left side
+            if current_branch.left is None:
+                # The value isn't in there
+                return False
+            else:
+                # Need to keep looking.  Call _contains
+                # recursively on the left sub-tree.
+                return self._contains(data, current_branch.left)
+        elif data > current_branch.data:
+            # The data will be found on the right side.
+            if current_branch.right is None:
+                # The value isn't in there
+                return False
+            else:
+                # Need to keep looking.  Call _contains
+                # recursively on the right sub-tree.
+                return self._contains(data, current_branch.right)
+        elif data == current_branch.data:
+            return True
+        else:
+            return False
 
 ```
 
-In this code snippet, we are assuming we have a class called BST (Binary Search Tree.) We are also assuming that each branch is represented by an object, let's say `self.branch`. This object, `self.branch`, contains a `value` attribute, which is it's number. It also is possibly linked to a `left` branch (with a value less than) and a `right` branch (with a value greater than). 
+In this code snippet, we are assuming we have a class called BST (Binary Search Tree.) We are also assuming that each branch is represented by an object, let's say `self.branch`. This object, `self.branch`, contains a `data` attribute, which is it's number. It also is possibly linked to a `left` branch (with a value less than) and a `right` branch (with a value greater than). 
 
-This function starts at the root branch, and takes in a value. First, it checks if the branch has no data. If this is true, the branch doesn't exist and therefore the value isn't found in the tree, so the function returns `false`.
+This function starts at the root branch, and takes in a value. First, it checks if the branch has no data. If this is true, the branch doesn't exist and therefore the value isn't found in the tree, so the function returns `False`.
 
-Next, it checks if the value is equal to the data of the root branch. If this is true, the data is found in the tree, and it's safe to end the function returning `true`. 
+Next, it checks if the value is equal to the data of the root branch. If this is true, the data is found in the tree, and it's safe to end the function returning `True`. 
 
 In the case that the first two conditions don't apply, it checks if the value is greater than the root. If so, it calls the function again recursively with the `right` branch. This will repeat the whole process with this branch.
 
 Similarly, if the value is less than the root, it will call the function again on the branch directly to the `left` of the root. This will repeat the process on the left side of the tree.
 
 ### Problem to solve
+Here is a sample BST class, including the "contains" function we showed in the example.
 
+```python
+class BST:
+
+    class Branch:
+        """
+        Each branch of the BST will have data and links to the 
+        left and right sub-tree. 
+        """
+
+        def __init__(self, data):
+            """ 
+            Initialize the Branch to the data provided.  Initially
+            the links are unknown so they are set to None.
+            """
+       
+            self.data = data
+            self.left = None
+            self.right = None
+
+    def __init__(self):
+        """
+        Initialize an empty BST.
+        """
+        self.root = None
+
+
+    def contains(self, data):
+        """ 
+        Checks if data is in the BST.
+        """
+        return self._contains(data, self.root)  # Start at the root
+
+
+    def _contains(self, data, current_branch):
+        """
+        This function will search for a Branch that contains
+        'data'.  The current sub-tree being search is 
+        represented by 'Branch'.  This function is intended
+        to be called the first time by the __contains__ function.
+        """
+        
+        if data < current_branch.data:
+            # The data will be found on the left side
+            if current_branch.left is None:
+                # The value isn't in there
+                return False
+            else:
+                # Need to keep looking.  Call _contains
+                # recursively on the left sub-tree.
+                return self._contains(data, current_branch.left)
+        elif data > current_branch.data:
+            # The data will be found on the right side.
+            if current_branch.right is None:
+                # The value isn't in there
+                return False
+            else:
+                # Need to keep looking.  Call _contains
+                # recursively on the right sub-tree.
+                return self._contains(data, current_branch.right)
+        elif data == current_branch.data:
+            return True
+        else:
+            return False
+
+```
+
+Using this class, impliment a function to add a value to the tree. You should be able to run the following code:
+
+```python
+my_bst = BST()
+value = 1
+
+print(my_bst.contains(value))
+# output = false
+
+my_bst.add_value(value)
+
+print(my_bst.contains(value))
+# output = true
+
+```
 
 ## Example solutions
 ### Example solution to the stack problem:
@@ -429,4 +535,131 @@ for x in find_similar_entries(word_list1, word_list2):
 # displaying the amount of words in both vs the amount of similar words
 print(len(word_list1) + len(word_list2))
 print(len(find_similar_entries(word_list1, word_list2)))
+```
+
+### Example solution to the tree problem:
+```python
+class BST:
+
+    class Branch:
+        """
+        Each branch of the BST will have data and links to the 
+        left and right sub-tree. 
+        """
+
+        def __init__(self, data):
+            """ 
+            Initialize the Branch to the data provided.  Initially
+            the links are unknown so they are set to None.
+            """
+       
+            self.data = data
+            self.left = None
+            self.right = None
+
+    def __init__(self):
+        """
+        Initialize an empty BST.
+        """
+        self.root = None
+
+
+    def contains(self, data):
+        """ 
+        Checks if data is in the BST.
+        """
+        return self._contains(data, self.root)  # Start at the root
+
+
+    def _contains(self, data, current_branch):
+        """
+        This function will search for a Branch that contains
+        'data'.  The current sub-tree being search is 
+        represented by 'Branch'.  This function is intended
+        to be called the first time by the __contains__ function.
+        """
+        
+        if data < current_branch.data:
+            # The data will be found on the left side
+            if current_branch.left is None:
+                # The value isn't in there
+                return False
+            else:
+                # Need to keep looking.  Call _contains
+                # recursively on the left sub-tree.
+                return self._contains(data, current_branch.left)
+        elif data > current_branch.data:
+            # The data will be found on the right side.
+            if current_branch.right is None:
+                # The value isn't in there
+                return False
+            else:
+                # Need to keep looking.  Call _contains
+                # recursively on the right sub-tree.
+                return self._contains(data, current_branch.right)
+        elif data == current_branch.data:
+            return True
+        else:
+            return False
+
+        
+
+        
+    def add_value(self, data):
+        """
+        Insert 'data' into the BST.  If the BST
+        is empty, then set the root equal to the new 
+        node.  Otherwise, use _insert to recursively
+        find the location to insert.
+        """
+        if self.root is None:
+            self.root = BST.Branch(data)
+        else:
+            self._add_value(data, self.root)  # Start at the root
+
+    def _add_value(self, data, Branch):
+        """
+        This function will look for a place to insert a Branch
+        with 'data' inside of it.  The current sub-tree is
+        represented by 'Branch'.  This function is intended to be
+        called the first time by the insert function.
+        """
+        if data < Branch.data:
+            # The data belongs on the left side.
+            if Branch.left is None:
+                # We found an empty spot
+                Branch.left = BST.Branch(data)
+            else:
+                # Need to keep looking.  Call _insert
+                # recursively on the left sub-tree.
+                self._insert(data, Branch.left)
+        elif data > Branch.data:
+            # The data belongs on the right side.
+            if Branch.right is None:
+                # We found an empty spot
+                Branch.right = BST.Branch(data)
+            else:
+                # Need to keep looking.  Call _insert
+                # recursively on the right sub-tree.
+                self._insert(data, Branch.right)
+        else:
+            # the value is in the tree
+            return 
+        
+
+
+# initialize
+my_bst = BST()
+my_bst.add_value(5) # this is for the root
+
+# test
+value = 1
+
+print(my_bst.contains(value))
+# output = False
+
+my_bst.add_value(value)
+
+print(my_bst.contains(value))
+# output = True
 ```
