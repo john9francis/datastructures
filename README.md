@@ -44,6 +44,9 @@ my_stack.pop()
 
 With these two functions, "append" and "pop," we have everything we need to manipulate a stack. 
 ### Performance
+
+[Big O graph](#useful-pictures)
+
 You may be wondering, why would I use a stack instead of a normal list? Well, one reason is that a stack has very good performance. If you are familiar with Big-O notation, many list operations can be O(n) or even O(n^2). On the other hand, stack operations are almost all just O(1). 
 
 If you think about it, the computer doesn't have to do much to deal with a stack. No matter how big the stack is, you're only dealing with the last entry.
@@ -157,6 +160,8 @@ for x in shared_values:
 ```
 
 ### Performance
+
+[Big O graph](#useful-pictures)
 
 Hash values work almost like pointers, they are used to access a certain index in the set. Because of this, most set operations are O(1) performance. This is a great benefit of using sets, their excellent performance. 
 
@@ -278,6 +283,8 @@ Let's do a visual example. Say we want to find out if the value "3" is found in 
 
 
 ### Performance
+
+[Big O graph](#useful-pictures)
 
 Dealing with a tree datastructure has excellent performance. Tree operations are often O(log n) performance, becuase of the nature of starting at the middle, then the middle of one side, then the middle of one side, etc. 
 
@@ -432,6 +439,12 @@ print(my_bst.contains(value))
 
 ```
 
+[example solution](#example-solutions)
+
+## Useful pictures
+
+![different O(n) performances graph](on_graph.jpg)
+
 ## Example solutions
 ### Example solution to the stack problem:
 ```python
@@ -453,7 +466,6 @@ def reverse_word(word):
   return new_word
 ```
 
-[example solution](#example-solutions)
 
 ### Example solution to the set problem
 ```python
