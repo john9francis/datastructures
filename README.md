@@ -281,7 +281,9 @@ Let's do a visual example. Say we want to find out if the value "3" is found in 
 
 ### Example
 
-One example is seeing if the tree contains a certain value. We will start by comparing the value of interest with the root value. If the value is bigger, send it right. If it's less, send it left. If it's equal, then return `true` because the value has been found. Here's a sample python function to illustrate how this is implimented:
+Here's an example of a python function for a BST called, "contains." This function will check if the BST contains a certain value. 
+
+We will start by comparing the value of interest with the root value. If the value is bigger, send it right. If it's less, send it left. If it's equal, then return `true` because the value has been found. Then we repeat the process until the value gets found. Here's a sample python function to illustrate how this is implimented:
 
 ```python
 class BST:
