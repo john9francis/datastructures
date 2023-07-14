@@ -86,7 +86,7 @@ print(reverse_word('Hello World'))
 > dlroW olleH
 ```
 
-[example solution](#example-solutions)
+[example solution](#example-solution-to-the-stack-problem:)
 
 ## Set 
 
