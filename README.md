@@ -279,6 +279,10 @@ Let's do a visual example. Say we want to find out if the value "3" is found in 
 
 ### Performance
 
+Dealing with a tree datastructure has excellent performance. Tree operations are often O(log n) performance, becuase of the nature of starting at the middle, then the middle of one side, then the middle of one side, etc. This is only possible if the tree is set up well. If a tree is to be O(log n) performance, it needs to have the root be the mean value. This is called a "balanced" tree. 
+
+![]()
+
 ### Example
 
 Here's an example of a python function for a BST called, "contains." This function will check if the BST contains a certain value. 
