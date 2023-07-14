@@ -453,6 +453,8 @@ def reverse_word(word):
   return new_word
 ```
 
+[example solution](#example-solutions)
+
 ### Example solution to the set problem
 ```python
 speech_1 = '''The media will not show the magnitude of this crowd. Even I, 
